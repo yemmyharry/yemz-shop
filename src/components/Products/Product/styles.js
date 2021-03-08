@@ -5,5 +5,9 @@ export default makeStyles(() => ({
         maxWidth: 345,
         marginTop: '2rem',
         marginRight: '2rem'
+    },
+    actions: {
+        display: 'flex',
+        justifyContent: 'flex-end'
     }
 }))
