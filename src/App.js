@@ -1,10 +1,11 @@
-import Product from './components/Products/Products'
+import {Navbar, Products} from '../src/components/Products/index'
 
 
 function App() {
   return (
     <div className="App">
-      <Product />
+      <Navbar />
+      <Products />
     </div>
   );
 }
