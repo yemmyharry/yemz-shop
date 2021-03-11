@@ -20,16 +20,19 @@ export default function Product({ product }) {
           component="img"
           alt="product-image"
           height="150"
-          image={product.image}
-          title="product-image"
+          image={product.media.source}
+          title={product.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {product.name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {product.description}
-          </Typography>
+          <div className={classes.cardContent}>
+            <Typography gutterBottom variant="h6">
+              {product.name}
+            </Typography>
+            <Typography variant="h6git ">
+              {product.price.formatted_with_symbol}
+            </Typography>
+          </div>
+          <Typography dangerouslySetInnerHTML={{ __html: product.description}} variant="body2" color="textSecondary" component="p" />
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actions}>
