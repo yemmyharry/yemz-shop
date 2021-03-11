@@ -11,7 +11,7 @@ import {
 import { AddShoppingCart } from "@material-ui/icons";
 import useStyles from "./styles";
 
-export default function Product({ product }) {
+export default function Product({ product, onAddToCart }) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -36,7 +36,7 @@ export default function Product({ product }) {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actions}>
-        <IconButton aria-label="Add to Cart">
+        <IconButton aria-label="Add to Cart" onClick={()=>onAddToCart(product.id, 1)}>
           <AddShoppingCart />
         </IconButton>
       </CardActions>

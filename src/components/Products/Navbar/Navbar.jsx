@@ -11,8 +11,10 @@ import {
 import {ShoppingCart} from '@material-ui/icons'
 import logo from '../../../assets/logo1.png'
 
-export default function Navbar() {
+export default function Navbar({cart_items}) {
+
     const classes = useStyles();
+    
   return (
     <div className={classes.root}>
       <AppBar position="fixed" color="secondary" className={classes.appBar}>
@@ -24,7 +26,7 @@ export default function Navbar() {
           </Typography>
           <div>
               <iconButton aria-label="show cart items">
-                <Badge badgeContent={3} color="primary">
+                <Badge badgeContent={cart_items} color="primary">
                     <ShoppingCart />
                 </Badge>
               </iconButton>

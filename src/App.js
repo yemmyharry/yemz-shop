@@ -5,23 +5,33 @@ import {commerce} from './lib/commerce'
 
 function App() {
     const [products, setProducts] = useState([])
+    const [cart , setCart] = useState({})
 
-    const fetchData = async () => {
+    const fetchProducts = async () => {
         const {data} = await commerce.products.list()
         
         setProducts(data)
     }
 
+    const fetchCart = () => {
+      commerce.cart.retrieve().then((cart) => setCart(cart));
+    }
+
+    const addToCart = (productId, quantity) => {
+      commerce.cart.add(productId, quantity).then((response) => setCart(response));
+    }
+
     useEffect(()=>{
-        fetchData()
+        fetchProducts()
+        fetchCart()
     },[])
 
-    console.log(products)
+    console.log(cart)
 
   return (
     <div className="App">
-      <Navbar />
-      <Products products={products} />
+      <Navbar cart_items={cart.total_items} />
+      <Products products={products} onAddToCart={addToCart} />
     </div>
   );
 }
