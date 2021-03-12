@@ -1,39 +1,50 @@
-import React, {useState, useEffect} from 'react'
-import {Navbar, Products, Cart} from '../src/components/Products/index'
-import {commerce} from './lib/commerce'
-
+import React, { useState, useEffect } from "react";
+import { Navbar, Products, Cart } from "../src/components/Products/index";
+import { commerce } from "./lib/commerce";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-    const [products, setProducts] = useState([])
-    const [cart , setCart] = useState({})
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState({});
 
-    const fetchProducts = async () => {
-        const {data} = await commerce.products.list()
-        
-        setProducts(data)
-    }
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
 
-    const fetchCart = () => {
-      commerce.cart.retrieve().then((cart) => setCart(cart));
-    }
+    setProducts(data);
+  };
 
-    const addToCart = (productId, quantity) => {
-      commerce.cart.add(productId, quantity).then((response) => setCart(response));
-    }
+  const fetchCart = () => {
+    commerce.cart.retrieve().then((cart) => setCart(cart));
+  };
 
-    useEffect(()=>{
-        fetchProducts()
-        fetchCart()
-    },[])
+  const addToCart = (productId, quantity) => {
+    commerce.cart
+      .add(productId, quantity)
+      .then((response) => setCart(response));
+  };
 
-    console.log(cart)
+  useEffect(() => {
+    fetchProducts();
+    fetchCart();
+  }, []);
+
+  console.log(cart);
 
   return (
-    <div className="App">
-      <Navbar cart_items={cart.total_items} />
-      {/* <Products products={products} onAddToCart={addToCart} /> */}
-      <Cart cart={cart} />
-    </div>
+    <Router>
+      <div className="App">
+         <Navbar cart_items={cart.total_items} />
+        <Switch>
+          <Route exact path="/">
+            <Products products={products} onAddToCart={addToCart} />
+          </Route>
+          <Route exact path="/cart">
+            <Cart cart={cart} />
+          </Route>
+         
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
