@@ -28,7 +28,7 @@ export default function Product({ product, onAddToCart }) {
             <Typography gutterBottom variant="h6">
               {product.name}
             </Typography>
-            <Typography variant="h6git ">
+            <Typography variant="h6">
               {product.price.formatted_with_symbol}
             </Typography>
           </div>
