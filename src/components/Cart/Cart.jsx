@@ -3,6 +3,7 @@ import {Container, Grid, Button, Typography } from '@material-ui/core'
 import useStyles from './styles'
 import CartItem from './CartItem/CartItem'
 import {Link} from 'react-router-dom'
+import Flutterwave from '../../Flutterwave/FlutterwaveTest'
 
  function Cart({cart, handleEmptyCart, handleRemoveFromCart, handleUpdateQuantity}) {
 
@@ -27,7 +28,8 @@ import {Link} from 'react-router-dom'
             <Typography variant="h4"> Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
             <div>
                 <Button className={classes.emptyButton} size='large' variant="contained" onClick={handleEmptyCart}>Empty Cart</Button>
-                <Button className={classes.emptyButton} size='large' variant="contained">Checkout</Button>
+                {/* <Button className={classes.emptyButton} size='large' variant="contained"></Button> */}
+                <Flutterwave amount={cart.subtotal.raw}/>
             </div>
         </div>
         </>
