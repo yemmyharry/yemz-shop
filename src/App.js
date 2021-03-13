@@ -40,7 +40,7 @@ function App() {
   useEffect(() => {
     fetchProducts();
     fetchCart();
-  });
+  },[]);
 
   console.log(cart);
 
