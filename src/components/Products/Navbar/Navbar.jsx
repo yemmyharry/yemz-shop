@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import {ShoppingCart} from '@material-ui/icons'
 import logo from '../../../assets/logo1.png'
+import {Link} from 'react-router-dom'
 
 export default function Navbar({cart_items}) {
 
@@ -20,16 +21,16 @@ export default function Navbar({cart_items}) {
       <AppBar position="fixed" color="secondary" className={classes.appBar}>
         <Toolbar>
          
-          <Typography variant="h6" className={classes.title}>
+          <Typography component={Link} to="/" variant="h6" className={classes.title}>
               <img src={logo} alt="my-logo" height="25px" className={classes.image} />
-            Yemz-Shop
+             Yemz-Shop
           </Typography>
           <div>
-              <iconButton aria-label="show cart items">
+              <IconButton component={Link} to="/cart" aria-label="show cart items">
                 <Badge badgeContent={cart_items} color="primary">
                     <ShoppingCart />
                 </Badge>
-              </iconButton>
+              </IconButton>
           </div>
     
         </Toolbar>

@@ -10,7 +10,7 @@ import {
 
 import useStyles from "./styles";
 
-export default function CartItem({ item }) {
+export default function CartItem({ item, handleUpdateQuantity, handleRemoveFromCart }) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -31,16 +31,16 @@ export default function CartItem({ item }) {
         </div>
         <CardActions>
           <div className={classes.buttons}>
-            <Button type="button" size="small">
+            <Button type="button" size="small" onClick={()=> handleUpdateQuantity(item.id, item.quantity - 1)}>
               -
             </Button>
             <Typography>{item.quantity}</Typography>
-            <Button type="button" size="small">
+            <Button type="button" size="small" onClick={()=> handleUpdateQuantity(item.id, item.quantity + 1)}>
               +
             </Button>
            
           </div>
-           <Button className={classes.actions} variant="contained" type="button" color="primary">
+           <Button className={classes.actions} variant="contained" type="button" color="primary" onClick={()=> handleRemoveFromCart(item.id)}>
             Remove
           </Button>
         </CardActions>

@@ -11,6 +11,7 @@ import {
 import { AddShoppingCart } from "@material-ui/icons";
 import useStyles from "./styles";
 
+
 export default function Product({ product, onAddToCart }) {
   const classes = useStyles();
   return (

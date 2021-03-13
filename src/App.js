@@ -23,6 +23,20 @@ function App() {
       .then((response) => setCart(response));
   };
 
+  const removeFromCart = (productId) => {
+    commerce.cart.remove(productId).then((response) => setCart(response));
+  };
+
+  const updateQuantity = (productId, quantity) => {
+    commerce.cart
+      .update(productId, { quantity: quantity })
+      .then((response) => setCart(response));
+  };
+
+  const emptyCart = () => {
+    commerce.cart.empty().then((response) => setCart(response));
+  }
+
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -33,15 +47,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-         <Navbar cart_items={cart.total_items} />
+        <Navbar cart_items={cart.total_items} />
         <Switch>
           <Route exact path="/">
             <Products products={products} onAddToCart={addToCart} />
           </Route>
           <Route exact path="/cart">
-            <Cart cart={cart} />
+            <Cart cart={cart} handleRemoveFromCart={removeFromCart} handleUpdateQuantity={updateQuantity} handleEmptyCart={emptyCart} />
           </Route>
-         
         </Switch>
       </div>
     </Router>

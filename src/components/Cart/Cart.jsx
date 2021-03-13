@@ -3,7 +3,7 @@ import {Container, Grid, Button, Typography } from '@material-ui/core'
 import useStyles from './styles'
 import CartItem from './CartItem/CartItem'
 
- function Cart({cart}) {
+ function Cart({cart, handleEmptyCart, handleRemoveFromCart, handleUpdateQuantity}) {
 
     const classes = useStyles()
     const EmptyCart = () => {
@@ -17,14 +17,14 @@ import CartItem from './CartItem/CartItem'
         <Grid container spacing={3}>
             {cart.line_items.map((item) => (
                 <Grid item xs={12} sm={4} key={item.id} >
-                    <CartItem item={item} />
+                    <CartItem item={item} handleUpdateQuantity={handleUpdateQuantity} handleRemoveFromCart={handleRemoveFromCart} />
                 </Grid>
             ))}
         </Grid>
         <div className={classes.cardDetails}>
             <Typography variant="h4"> Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
             <div>
-                <Button className={classes.emptyButton} size='large' variant="contained">Empty Cart</Button>
+                <Button className={classes.emptyButton} size='large' variant="contained" onClick={handleEmptyCart}>Empty Cart</Button>
                 <Button className={classes.emptyButton} size='large' variant="contained">Checkout</Button>
             </div>
         </div>
