@@ -35,7 +35,7 @@ function App() {
 
   const emptyCart = () => {
     commerce.cart.empty().then((response) => setCart(response));
-  }
+  };
 
   useEffect(() => {
     fetchProducts();
@@ -53,7 +53,12 @@ function App() {
             <Products products={products} onAddToCart={addToCart} />
           </Route>
           <Route exact path="/cart">
-            <Cart cart={cart} handleRemoveFromCart={removeFromCart} handleUpdateQuantity={updateQuantity} handleEmptyCart={emptyCart} />
+            <Cart
+              cart={cart}
+              handleRemoveFromCart={removeFromCart}
+              handleUpdateQuantity={updateQuantity}
+              handleEmptyCart={emptyCart}
+            />
           </Route>
         </Switch>
       </div>
