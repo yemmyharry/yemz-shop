@@ -39,8 +39,13 @@ function App() {
 
   useEffect(() => {
     fetchProducts();
-    fetchCart();
   },[]);
+
+  useEffect(() => {
+    fetchCart();
+  });
+
+
 
   console.log(cart);
 
