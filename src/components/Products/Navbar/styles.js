@@ -13,7 +13,8 @@ export default makeStyles((theme) => ({
     flexGrow: 1,
     display: "flex",
     alignItems: "center",
-    fontSize: '2.5rem',
+    fontSize: '1.5rem',
+    textDecoration: 'none'
     // fontFamily: 'helvetica'
   },
 }));

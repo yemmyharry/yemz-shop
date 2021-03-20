@@ -1,6 +1,7 @@
-import React from "react";
+import React,{ useState, useEffect} from "react";
 import { Button } from "@material-ui/core";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import styles from "./index.css"
 
 export default function Flutterwave({amount}) {
   const config = {
@@ -12,7 +13,7 @@ export default function Flutterwave({amount}) {
     customer: {
       email: "user@gmail.com",
       phonenumber: "07064586146",
-      name: "joel ugwumadu",
+      name: "yemi harry",
     },
     customizations: {
       title: "Yemz-Shop",
@@ -24,13 +25,19 @@ export default function Flutterwave({amount}) {
 
   const handleFlutterPayment = useFlutterwave(config);
 
+
+
+
+
   return (
     <div className="App">
       {/* <h1>Hello Test user</h1> */}
 
       <Button
         size="large"
+        color="secondary"
         variant="contained"
+        className={styles.shift}
         onClick={() => {
           handleFlutterPayment({
             callback: (response) => {
